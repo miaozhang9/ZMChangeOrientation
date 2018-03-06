@@ -1,0 +1,61 @@
+<html>
+    <header>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript">
+            <!--            document.write(encodeURI("share://shareClick?title='分享的标题'&content='分享的内容'&imagePath='图片地址'"))-->
+            
+        function loadURL(url) {
+            var iFrame;
+            iFrame = document.createElement("iframe");
+            iFrame.setAttribute("src", url);
+            iFrame.setAttribute("style", "display:none;");
+            iFrame.setAttribute("height", "0px");
+            iFrame.setAttribute("width", "0px");
+            iFrame.setAttribute("frameborder", "0");
+            document.body.appendChild(iFrame);
+            // 发起请求后这个 iFrame 就没用了，所以把它从 dom 上移除掉
+            iFrame.parentNode.removeChild(iFrame);
+            iFrame = null;
+        }
+        function shareClick1() {
+            loadURL("share://shareClick?title=分享的标题&content=分享的内容&imagePath=图片地址");
+        }
+    
+        function landscape() {
+            loadURL("landscape://lanscapeAction");
+        }
+        
+        function portrait() {
+            loadURL("portrait://portraitAction");
+        }
+        
+        </script>
+        
+        <style>
+            input {
+                width: 80%;
+                height: 40;
+                margin-left:10%;
+                text-align:center;
+                border-width:1px;
+                border-color:#333333;
+                border-style:solid;
+                font-size:16px;
+                vertical-align:middle;
+                margin-bottom: 10px !important;
+                padding-top: 10px !important;
+                margin-top: 10px !important;
+            }
+        </style>
+        
+    </header>
+    
+    <body>
+        
+        <h1>Tools List</h1>
+<!--        <a href="https://www.baidu.com">本地_百度一下</a>-->
+        <input type="button" value="横屏" onclick="landscape()" />
+        <input type="button" value="竖屏" onclick="portrait()" />
+        <input type="button" value="验证H5传参给Native" onclick="shareClick1()" />
+    </body>
+</html>
